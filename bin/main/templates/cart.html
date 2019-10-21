@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>カート画面</title>
+</head>
+<body>
+	if (!isset($_POST["order"])){
+	
+	 setccokie("order", "", item() - 3600);
+	 }else{
+	 
+	  $ordervalue = $_POST["order"];
+	  setcookie("order", $ordervalue);
+	  }
+</body>
+</html>
