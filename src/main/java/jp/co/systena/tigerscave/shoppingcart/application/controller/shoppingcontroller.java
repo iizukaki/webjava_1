@@ -1,31 +1,40 @@
 package jp.co.systena.tigerscave.shoppingcart.application.controller;
 
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import jp.co.systena.tigerscave.shoppingcart.application.model.ListService;
+import jp.co.systena.tigerscave.shoppingcart.application.service.Item;
 
-@Controller
+
+@Controller//Viewに返却するアノテーション
 public class shoppingcontroller {
 
-    /**
-     * Thymeleaf 基本編
-     * 
-     * @param mav
-     * ModelAndViewクラステンプレートで利用するデータ類とビューに関する情報をまとめて管理するクラス
-     * @return
-     */
-  
-    @RequestMapping("/Shopping")
-    public ModelAndView index(ModelAndView mav) {
-      
-          //変数式
-          //・コントローラーからテンプレートに値を渡す
-          //・変数「msg」に値を設定
-          mav.addObject("msg", "コントローラーからテンプレートに値を渡す");
-          
+    @RequestMapping(value="/ListView", method = RequestMethod.GET)// URLとのマッピング
+    public ModelAndView display() {
+      // Viewに渡すデータを設定
+      ModelAndView mav = new ModelAndView();
+
+          mav.addObject("data", list ());  // 新規クラスを設定
+
           //使用するビューを設定
-          mav.setViewName("Shopping");
-      
+          mav.setViewName("ListView");
+
           return mav;
+          
+          
+          }
+
+    private Object list() {
+      // TODO 自動生成されたメソッド・スタブ
+      ListService obj = new ListService();
+      List<Map<String, Item>> list = new ArrayList<>();
+      System.out.println(list.get(0));
+      return null;
     }
 }

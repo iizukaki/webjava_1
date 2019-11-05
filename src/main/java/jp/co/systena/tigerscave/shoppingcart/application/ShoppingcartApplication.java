@@ -1,4 +1,4 @@
-package jp.co.systena.tigerscave.shoppingcart.application.controller;
+package jp.co.systena.tigerscave.shoppingcart.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

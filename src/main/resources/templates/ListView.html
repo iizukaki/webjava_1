@@ -6,17 +6,17 @@
 </head>
 <body>
 商品を選んでください
-	<form method="POST" action="shoppingcontroller.java">
-	 リンゴ　200円
-	 <input type="submit" name="order" value="カートに追加" ><br>
-	 バナナ　150円
-	 <input type="submit" name="order" value="カートに追加" ><br>
-	 ブドウ　500円
-	 <input type="submit" name="order" value="カートに追加"><br>
-
-
-
+	<form method="POST" th:action="@{/ListView}" >
+	
+	
+	<p th:each="entry : ${data}" th:text="${entry.key}">	
+	
+	
+	<p th:each="entry : ${data}" th:text="${entry.value}">	
+	<p><input type="submit" value="カートへ追加" /></p>//カートへ追加
+	
+	
+	<p th:text="${ListView}"></p>
 	</form>
-
 </body>
 </html>
