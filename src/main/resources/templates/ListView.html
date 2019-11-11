@@ -1,22 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="thhp://www.thumeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>商品選択</title>
+<title>ListView</title>
 </head>
 <body>
-商品を選んでください
-	<form method="POST" th:action="@{/ListView}" >
-	
-	
-	<p th:each="entry : ${data}" th:text="${entry.key}">	
-	
-	
-	<p th:each="entry : ${data}" th:text="${entry.value}">	
-	<p><input type="submit" value="カートへ追加" /></p>//カートへ追加
-	
-	
-	<p th:text="${ListView}"></p>
-	</form>
-</body>
+	<h2>商品一覧</h2>
+	<p th:if="${#maps.isEmpty(itemList)}">商品がありません。</p>
+	<table th:unless="${#maps.isEmpty(itemList)}" border="1">
+		<thead>
+			<tr>
+				<th>商品名</th>
+				<th>価格</th>
+				<th>商品ID</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+		<tr th:each="entry: ${itemList}">
+			<td th:text="${entry.value.name}"></td>
+			<td th:text="${entry.value.price}"></td>
+			<td th:text="${entry.value.itemId}"></td>
+			<td>
+			<form th:action="@{/list}" method="POST" th:object="${listForm}">
+					<input type="hidden" name="itemId" th:value="${entry.value.itemId}" />
+					<input type="number" name="num" min="1"/>
+					<input type="submit" value="カートに追加" />
+				</form>
+		</tr>
+		</tbody>
+	</table>
 </html>
